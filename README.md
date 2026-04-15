@@ -1,4 +1,4 @@
-# Contact Manager (Full Stack)
+# Contact Manager
 
 This project converts the CLI contact book into a full-stack web app.
 
