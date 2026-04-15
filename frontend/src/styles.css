@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap");
+
+:root {
+  --bg-1: #fff6e9;
+  --bg-2: #f7efe4;
+  --ink: #23201d;
+  --muted: #665e57;
+  --card: #fffefa;
+  --brand: #e46f3f;
+  --brand-2: #1f8f86;
+  --danger: #b42222;
+  --border: #d8cbbd;
+  --shadow: 0 16px 40px rgba(35, 32, 29, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Space Grotesk", sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(228, 111, 63, 0.2), transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(31, 143, 134, 0.16), transparent 30%),
+    linear-gradient(120deg, var(--bg-1), var(--bg-2));
+}
+
+.app-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 3rem;
+  animation: fade-up 500ms ease;
+}
+
+.hero {
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-2);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.hero h1 {
+  font-family: "DM Serif Display", serif;
+  margin: 0.2rem 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.hero p {
+  margin: 0.4rem 0;
+  color: var(--muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: 1rem;
+}
+
+.right-column {
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  background: color-mix(in srgb, var(--card) 84%, white 16%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.panel h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.15rem;
+}
+
+.contact-form,
+.search-panel {
+  display: grid;
+  gap: 0.7rem;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 0.8rem;
+  font: inherit;
+  background: #fff;
+}
+
+input:focus {
+  outline: 2px solid color-mix(in srgb, var(--brand) 45%, white 55%);
+  border-color: var(--brand);
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.65rem 0.9rem;
+  font: inherit;
+  font-weight: 600;
+  background: var(--brand);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--ink);
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+.actions,
+.card-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.suggestions p {
+  margin: 0.4rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.suggestions ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.list-head span {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.contact-grid {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.8rem;
+  background: #fff;
+  animation: card-in 350ms ease;
+}
+
+.contact-card h3 {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.contact-card p {
+  margin: 0.4rem 0;
+  color: var(--muted);
+}
+
+.status {
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.status.success {
+  background: rgba(31, 143, 134, 0.15);
+  color: #186c66;
+}
+
+.status.error {
+  background: rgba(180, 34, 34, 0.12);
+  color: #8b1f1f;
+}
+
+.state-text {
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .app-shell {
+    padding: 1.2rem 0.8rem 2rem;
+  }
+}
