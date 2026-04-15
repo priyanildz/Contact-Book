@@ -1,6 +1,6 @@
 # Contact Manager
 
-This project converts the CLI contact book into a full-stack web app.
+A full-stack Contact Management System built to efficiently store, manage, and retrieve contact information through a modern web interface.
 
 ## Live Demo
 
@@ -40,6 +40,8 @@ contact-manager/
 
 ## Features
 
+- User registration and login (JWT authentication)
+- Contacts are private per logged-in user
 - Add contact with validation
 - Search contacts by name, phone, or email
 - Suggest contacts while searching
@@ -56,6 +58,21 @@ Update backend/.env:
 ```env
 PORT=5000
 MONGO_URI=your_mongodb_atlas_connection_string_here
+JWT_SECRET=your_strong_secret_here
+```
+
+### 1.1 Configure frontend environment
+
+Create frontend/.env with either option:
+
+```env
+VITE_API_ROOT=http://localhost:5000/api
+```
+
+or
+
+```env
+VITE_API_BASE_URL=http://localhost:5000/api/contacts
 ```
 
 ### 2. Install backend dependencies

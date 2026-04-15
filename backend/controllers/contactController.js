@@ -7,13 +7,14 @@ export const getContacts = async (req, res) => {
     const { q } = req.query;
     const filter = q
       ? {
+          owner: req.user.id,
           $or: [
             { name: { $regex: q, $options: "i" } },
             { email: { $regex: q, $options: "i" } },
             { phone: { $regex: q, $options: "i" } }
           ]
         }
-      : {};
+      : { owner: req.user.id };
 
     const contacts = await Contact.find(filter).sort({ name: 1 });
     res.status(200).json(contacts);
@@ -24,7 +25,7 @@ export const getContacts = async (req, res) => {
 
 export const getContactById = async (req, res) => {
   try {
-    const contact = await Contact.findById(req.params.id);
+    const contact = await Contact.findOne({ _id: req.params.id, owner: req.user.id });
 
     if (!contact) {
       return res.status(404).json({ message: "Contact not found" });
@@ -39,12 +40,14 @@ export const getContactById = async (req, res) => {
 export const createContact = async (req, res) => {
   try {
     const payload = {
+      owner: req.user.id,
       name: normalizeName(req.body.name),
       phone: (req.body.phone || "").trim(),
       email: (req.body.email || "").trim().toLowerCase()
     };
 
     const existingContact = await Contact.findOne({
+      owner: req.user.id,
       $or: [{ name: payload.name }, { phone: payload.phone }, { email: payload.email }]
     });
 
@@ -61,7 +64,7 @@ export const createContact = async (req, res) => {
 
 export const updateContact = async (req, res) => {
   try {
-    const contact = await Contact.findById(req.params.id);
+    const contact = await Contact.findOne({ _id: req.params.id, owner: req.user.id });
 
     if (!contact) {
       return res.status(404).json({ message: "Contact not found" });
@@ -74,6 +77,7 @@ export const updateContact = async (req, res) => {
     };
 
     const conflict = await Contact.findOne({
+      owner: req.user.id,
       _id: { $ne: contact._id },
       $or: [{ name: updatedData.name }, { phone: updatedData.phone }, { email: updatedData.email }]
     });
@@ -82,10 +86,14 @@ export const updateContact = async (req, res) => {
       return res.status(409).json({ message: "Name, phone, or email already exists" });
     }
 
-    const updated = await Contact.findByIdAndUpdate(req.params.id, updatedData, {
+    const updated = await Contact.findOneAndUpdate(
+      { _id: req.params.id, owner: req.user.id },
+      updatedData,
+      {
       new: true,
       runValidators: true
-    });
+      }
+    );
 
     res.status(200).json(updated);
   } catch (error) {
@@ -95,13 +103,13 @@ export const updateContact = async (req, res) => {
 
 export const deleteContact = async (req, res) => {
   try {
-    const contact = await Contact.findById(req.params.id);
+    const contact = await Contact.findOne({ _id: req.params.id, owner: req.user.id });
 
     if (!contact) {
       return res.status(404).json({ message: "Contact not found" });
     }
 
-    await Contact.findByIdAndDelete(req.params.id);
+    await Contact.findOneAndDelete({ _id: req.params.id, owner: req.user.id });
     res.status(200).json({ message: "Contact deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Failed to delete contact", error: error.message });
@@ -117,6 +125,7 @@ export const suggestContacts = async (req, res) => {
     }
 
     const suggestions = await Contact.find({
+      owner: req.user.id,
       name: { $regex: q.trim(), $options: "i" }
     })
       .sort({ name: 1 })

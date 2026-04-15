@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
+import authMiddleware from "./middleware/authMiddleware.js";
+import authRoutes from "./routes/authRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 
 dotenv.config();
@@ -19,7 +21,8 @@ app.get("/", (_req, res) => {
   res.status(200).json({ message: "Contact Manager API is running" });
 });
 
-app.use("/api/contacts", contactRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/contacts", authMiddleware, contactRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
