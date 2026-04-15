@@ -115,3 +115,55 @@ Frontend runs on http://localhost:5173 and backend on http://localhost:5000.
 - POST /api/contacts
 - PUT /api/contacts/:id
 - DELETE /api/contacts/:id
+
+## Authentication Endpoints
+
+- POST /api/auth/register
+- POST /api/auth/login
+
+## Authorization
+
+- All `/api/contacts` routes are protected.
+- Send JWT token in request headers:
+
+```http
+Authorization: Bearer <your_token>
+```
+
+## Deployment Configuration
+
+### Backend (Render)
+
+- Root Directory: `contact-manager/backend`
+- Build Command: `npm install`
+- Start Command: `npm start`
+- Environment Variables:
+
+```env
+MONGO_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_strong_secret
+PORT=5000
+```
+
+### Frontend (Vercel)
+
+- Root Directory: `contact-manager/frontend`
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Environment Variables:
+
+```env
+VITE_API_ROOT=https://contact-book-vaii.onrender.com/api
+```
+
+You can also use:
+
+```env
+VITE_API_BASE_URL=https://contact-book-vaii.onrender.com/api/contacts
+```
+
+## Multi-User Data Isolation
+
+- Every contact is saved with its owner (logged-in user).
+- Users can only view and manage contacts they created.
+- Duplicate checks for name/phone/email are enforced per user.

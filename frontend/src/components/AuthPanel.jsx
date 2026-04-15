@@ -36,7 +36,7 @@ function AuthPanel({ onLogin, onRegister, loading }) {
   return (
     <main className="app-shell">
       <section className="hero auth-hero">
-        <p className="eyebrow">Private Contact Space</p>
+        <p className="eyebrow">Contact Book</p>
         <h1>Sign in to manage your contacts</h1>
       </section>
 
