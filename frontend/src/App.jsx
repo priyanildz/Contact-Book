@@ -4,7 +4,7 @@ import AddContact from "./components/AddContact.jsx";
 import SearchContact from "./components/SearchContact.jsx";
 import ContactList from "./components/ContactList.jsx";
 
-const API_BASE = "http://localhost:5000/api/contacts";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api/contacts";
 
 function App() {
   const [contacts, setContacts] = useState([]);
