@@ -2,6 +2,10 @@
 
 This project converts the CLI contact book into a full-stack web app.
 
+## Live Demo
+
+https://contact-book-six.vercel.app/
+
 ## Tech Stack
 
 - Backend: Node.js + Express + MongoDB (Atlas)
