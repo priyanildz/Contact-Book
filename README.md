@@ -234,12 +234,15 @@ Each user has complete data isolation, ensuring that contacts are private and ac
 |-----------|------------|--------------|
 | <img src="assets/home.png" width="300"/> | Add Contact | <img src="assets/contact_added.png" width="300"/> | <img src="assets/list.png" width="300"/> |
 
-
+| Login Page |
+|-----------|
+| <img src="assets/login_page.png" width="900"/> |
 | Dashboard |
 |-----------|
 | <img src="assets/home.png" width="900"/> |
 | Add Contact |
 | <img src="assets/contact_added.png" width="900"/> |
+
 
 </div>
 
