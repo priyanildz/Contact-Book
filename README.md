@@ -230,18 +230,19 @@ Each user has complete data isolation, ensuring that contacts are private and ac
 
 <div align="center">
 
-| Dashboard | Add Contact | Contact List |
-|-----------|------------|--------------|
-| <img src="assets/home.png" width="300"/> | Add Contact | <img src="assets/contact_added.png" width="300"/> | <img src="assets/list.png" width="300"/> |
-
 | Login Page |
 |-----------|
 | <img src="assets/login_page.png" width="900"/> |
 | Dashboard |
-|-----------|
 | <img src="assets/home.png" width="900"/> |
 | Add Contact |
 | <img src="assets/contact_added.png" width="900"/> |
+| Delete Contact |
+| <img src="assets/contact_delete.png" width="900"/> |
+| Update Contact |
+| <img src="assets/contact_update.png" width="900"/> |
+| Search Contact |
+| <img src="assets/contact_search.png" width="900"/> |
 
 
 </div>
