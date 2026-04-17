@@ -237,9 +237,9 @@ Each user has complete data isolation, ensuring that contacts are private and ac
 
 | Dashboard |
 |-----------|
-| <img src="assets/home.png" width="600"/> |
+| <img src="assets/home.png" width="900"/> |
 | Add Contact |
-| <img src="assets/contact_added.png" width="600"/> |
+| <img src="assets/contact_added.png" width="900"/> |
 
 </div>
 
