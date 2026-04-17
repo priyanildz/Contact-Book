@@ -242,7 +242,7 @@ Each user has complete data isolation, ensuring that contacts are private and ac
 | Update Contact |
 | <img src="assets/contact_update.png" width="900"/> |
 | Search Contact |
-| <img src="assets/contact_search.png" width="900"/> |
+| <img src="assets/search.png" width="900"/> |
 
 
 </div>
