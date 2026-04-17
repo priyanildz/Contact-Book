@@ -230,9 +230,9 @@ Each user has complete data isolation, ensuring that contacts are private and ac
 
 <div align="center">
 
-| Dashboard | Add Contact | Delete Contact | Search Contact | Search Contact |
+| Dashboard | Add Contact | Contact List |
 |-----------|------------|--------------|
-| <img src="assets/home.png" width="300"/> | Add Contact |<img src="assets/contact_added.png" width="300"/> | <img src="assets/contact_delete.png" width="300"/> | <img src="assets/search.png" width="300"/> |
+| <img src="assets/home.png" width="300"/> | <img src="assets/contact_added.png" width="300"/> | <img src="assets/list.png" width="300"/> |
 
 </div>
 
